@@ -20,7 +20,7 @@ parts/
 sdist/
 var/
 wheels/
-*.egg-info/
+#*.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
@@ -106,10 +106,10 @@ venv.bak/
 mjkey.txt
 MUJOCO_LOG.TXT
 
-data
+#data
 
 *~
 *.*~
 
 .DS_Store
-/safety-gym/
+#/safety-gym/
