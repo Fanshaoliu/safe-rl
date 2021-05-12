@@ -15,7 +15,6 @@ import gym
 
 from time import time
 
-
 def run_evaluation(args, env, agent):
     agent.load(args.load_episode)
 
@@ -64,7 +63,35 @@ class Trainer():
                 # print(self.agent.fg)
                 self.env.render()
                 # Take action
+                '''
+                para
+                s:            状态, 由env.obs()得到
+                self.env:     实例化的环境类
+                ste:          p单次实验的步数
+                global_step:  总步数
+                
+                logic
+                1. low control
+                global_step小于开始训练的步数时，low_action随机采样得到，大于时，通过self._choose_action(s, self.sg)得到
+                self._choose_action就是网络
+                
+                执行动作：
+                obs, r, done, info = env.step(a)  # info is about cost
+                n_s = env.obs()
+                
+                2. high control
+                同样的有一个探索逻辑，self._choose_subgoal(step, s, self.sg, n_s, n_pos)选择subgoal
+                
+                self._choose_subgoal:
+                    if step % self.buffer_freq == 0:
+                        sg = self.high_con.policy(s, self.fg)
+                        其实就是网络了
+                    else:
+                        sg = self.subgoal_transition(s, sg, n_s, n_pos)
+                        其实就是 s[:sg.shape[0]] + sg - n_pos[:sg.shape[0]]
+                '''
                 a, r, n_s, done = self.agent.step(s, self.env, step, global_step, explore=True)
+
                 print("now pos: ", self.env.robot_pos)
                 print("goal pos: ", self.env.goal_pos)
                 print("sub goal: ", self.agent.sg)
@@ -72,9 +99,19 @@ class Trainer():
                 print()
 
                 # Append
+                '''
+                append对于低级与高级buffer的实现与奖励都是不同的
+                1. 低级策略的buffer和普通的dqn一样
+                2. 高级策略的buffer是隔一段时间收集一次
+                '''
                 self.agent.append(step, s, a, n_s, r, done)
 
                 # Train
+                '''
+                global_step大于训练步后
+                1. 低级策略每步都训练
+                2. 高级策略根据一个频率训练
+                '''
                 losses, td_errors = self.agent.train(global_step)
 
                 # Log
@@ -85,6 +122,10 @@ class Trainer():
                 episode_reward += r
                 step += 1
                 global_step += 1
+                '''
+                self.episode_subreward += self.sr
+                self.sg = self.n_sg
+                '''
                 self.agent.end_step()
 
             self.agent.end_episode(e, self.logger)
@@ -155,8 +196,8 @@ if __name__ == '__main__':
     # Replay Buffer
     parser.add_argument('--buffer_size', default=200000, type=int)
     parser.add_argument('--batch_size', default=10, type=int)
-    parser.add_argument('--buffer_freq', default=50, type=int) # 10->100
-    parser.add_argument('--train_freq', default=10, type=int)
+    parser.add_argument('--buffer_freq', default=100, type=int) # 10 -> 100
+    parser.add_argument('--train_freq', default=100, type=int) # 10 -> 100
     parser.add_argument('--reward_scaling', default=0.1, type=float)
     args = parser.parse_args()
 
