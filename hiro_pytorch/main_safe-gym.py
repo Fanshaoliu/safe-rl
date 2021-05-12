@@ -122,9 +122,11 @@ class Trainer():
                 episode_reward += r
                 step += 1
                 global_step += 1
+
+                # end_step主要是调整奖励与sub_goal
                 '''
-                self.episode_subreward += self.sr
-                self.sg = self.n_sg
+                self.episode_subreward += self.sr  # self.sr = self.low_reward(s, self.sg, n_s)
+                self.sg = self.n_sg                # self.n_sg = self._choose_subgoal(step, s, self.sg, n_s, n_pos)
                 '''
                 self.agent.end_step()
 
