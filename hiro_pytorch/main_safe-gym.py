@@ -59,8 +59,8 @@ class Trainer():
 
                 input_dim: state_dim + goal_dim (28+2)
                 ouput_dim: action_dim (2)
-                hidden_size: 64
-                action_func: tanh
+                hidden_size: 64, relu
+                output_action_func: tanh
 
             self.critic1 and self.critic2 and self.critic1_target and self.critic2_target
                 usage:
@@ -74,8 +74,8 @@ class Trainer():
 
                 input_dim: state_dim + goal_dim + action_dim (28+2+2)
                 ouput_dim: reward_dim (2)
-                hidden_size: 64
-                action_func: tanh
+                hidden_size: 64, relu
+                output_action_func: no
         '''
         global_step = 0
         start_time = time()
@@ -95,7 +95,7 @@ class Trainer():
             '''
             self.agent.set_final_goal(fg)
 
-            print(self.agent.fg, "self.fg")
+            # print(self.agent.fg, "self.fg")
 
             while not done:
                 # print(self.agent.fg)
@@ -130,11 +130,11 @@ class Trainer():
                 '''
                 a, r, n_s, done = self.agent.step(s, self.env, step, global_step, explore=True)
 
-                print("now pos: ", self.env.robot_pos)
-                print("goal pos: ", self.env.goal_pos)
-                print("sub goal: ", self.agent.sg)
-
-                print(np.shape(a), np.shape(r),np.shape(n_s),np.shape(done))
+                # print("now pos: ", self.env.robot_pos)
+                # print("goal pos: ", self.env.goal_pos)
+                # print("sub goal: ", self.agent.sg)
+                #
+                # print(np.shape(a), np.shape(r),np.shape(n_s),np.shape(done))
 
                 # Append
                 '''

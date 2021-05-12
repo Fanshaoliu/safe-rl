@@ -45,7 +45,7 @@ class TD3Critic(nn.Module):
         super(TD3Critic, self).__init__()
         # Q1
         self.l1 = nn.Linear(state_dim + goal_dim + action_dim, 64)
-        self.l2 = nn.Linear(64, 64)
+        # self.l2 = nn.Linear(64, 64)
         self.l3 = nn.Linear(64, 1)
         # Q2
         self.l4 = nn.Linear(state_dim + goal_dim + action_dim, 64)
@@ -56,7 +56,7 @@ class TD3Critic(nn.Module):
         sa = torch.cat([state, goal, action], 1)
 
         q = F.relu(self.l1(sa))
-        q = F.relu(self.l2(q))
+        # q = F.relu(self.l2(q))
         q = self.l3(q)
 
         return q
