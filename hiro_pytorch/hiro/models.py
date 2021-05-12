@@ -363,9 +363,7 @@ class LowerController(TD3Controller):
     def train(self, replay_buffer):
         if not self._initialized:
             self._initialize_target_networks()
-
         states, sgoals, actions, n_states, n_sgoals, rewards, not_done = replay_buffer.sample()
-
         return self._train(states, sgoals, actions, rewards, n_states, n_sgoals, not_done)
 
 class Agent():

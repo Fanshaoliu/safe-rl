@@ -40,6 +40,15 @@ class Trainer():
         self.logger = Logger(log_path=log_path)
 
     def train(self):
+        '''
+        shape of variables
+            agent: point
+                obs: (28,)
+                s  : (28,)
+                a  : (2,)
+                r  : ()
+                fg : (2,)
+        '''
         global_step = 0
         start_time = time()
         # self.env.render()
@@ -51,13 +60,19 @@ class Trainer():
             fg = self.env.goal_pos[:2]
             # print(np.shape(fg))
             s = self.env.obs()
+
             # print(np.shape(s))
             done = False
 
             step = 0
             episode_reward = 0
 
+            '''
+            self.fg = fg
+            '''
             self.agent.set_final_goal(fg)
+
+            print(self.agent.fg, "self.fg")
 
             while not done:
                 # print(self.agent.fg)
@@ -96,7 +111,7 @@ class Trainer():
                 print("goal pos: ", self.env.goal_pos)
                 print("sub goal: ", self.agent.sg)
 
-                print()
+                print(np.shape(a), np.shape(r),np.shape(n_s),np.shape(done))
 
                 # Append
                 '''
