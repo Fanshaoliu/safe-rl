@@ -1,0 +1,144 @@
+absl-py @ file:///opt/concourse/worker/volumes/live/aea96694-562a-4961-509a-d449e4835a9c/volume/absl-py_1615411185512/work
+aido-protocols-daffy==6.0.34
+asciimatics==1.13.0
+astor==0.8.1
+astunparse==1.6.3
+atari-py==0.2.6
+attrs==20.3.0
+base58==1.0.3
+beautifulsoup4==4.7.1
+Box2D==2.3.10
+Box2D-kengz==2.3.3
+cachetools==4.2.1
+carnivalmirror==0.6.2
+cbor2==5.2.0
+certifi==2020.12.5
+cffi==1.14.5
+chardet==4.0.0
+cloudpickle==1.6.0
+colorama==0.4.4
+coloredlogs==15.0
+compmake-z6==6.1.0
+coverage @ file:///opt/concourse/worker/volumes/live/aa96dc61-03a4-4f95-77ba-29dfe6dcc93a/volume/coverage_1614614853414/work
+cycler==0.10.0
+Cython @ file:///opt/concourse/worker/volumes/live/099571f3-4574-402f-63f6-642b5c40137d/volume/cython_1614014827620/work
+dataclasses==0.8
+dataclasses-json==0.5.2
+decorator==4.4.2
+dill==0.3.3
+-e git+https://github.com/duckietown/gym-duckietown.git@9c6ddd1645f613fb3f62ec7aa294b2eb23c06af2#egg=duckietown_gym_daffy
+duckietown-serialization-ds1==1.0.10
+duckietown-world-daffy==6.2.7
+fasteners==0.16
+freetype-py==2.2.0
+frozendict==1.2
+future==0.18.2
+gast @ file:///tmp/build/80754af9/gast_1597433534803/work
+glfw==2.1.0
+gltflib==1.0.6
+google-auth==1.29.0
+google-auth-oauthlib==0.4.4
+google-pasta==0.2.0
+grpcio @ file:///opt/concourse/worker/volumes/live/a0e3953b-c3d5-414b-5f1a-2c3bb74b03b2/volume/grpcio_1614884177516/work
+gym==0.18.0
+h5py @ file:///opt/concourse/worker/volumes/live/09cb9b5c-fac0-4b8e-4a2a-844fb10f14cb/volume/h5py_1593454153886/work
+humanfriendly==9.1
+idna==2.10
+imageio==2.9.0
+importlib-metadata @ file:///opt/concourse/worker/volumes/live/6958d43a-0a22-4892-7a8a-747deb9f5d31/volume/importlib-metadata_1615900436255/work
+joblib==0.14.1
+jsonschema==3.2.0
+Keras==2.4.3
+Keras-Applications @ file:///tmp/build/80754af9/keras-applications_1594366238411/work
+Keras-Preprocessing @ file:///tmp/build/80754af9/keras-preprocessing_1612283640596/work
+kiwisolver @ file:///opt/concourse/worker/volumes/live/f396cc75-ab93-4292-5463-c41bf6c4bd1a/volume/kiwisolver_1612282405830/work
+lxml==4.6.3
+Markdown @ file:///opt/concourse/worker/volumes/live/03d8c644-eb72-4044-78c2-7dbe22b6567f/volume/markdown_1614363827435/work
+marshmallow==3.11.1
+marshmallow-enum==1.5.1
+matplotlib @ file:///opt/concourse/worker/volumes/live/41e8cd50-031f-4dda-5787-dd3c4f4e0f08/volume/matplotlib-suite_1613407855571/work
+mkl-fft==1.3.0
+mkl-random==1.1.1
+mkl-service==2.3.0
+mock @ file:///tmp/build/80754af9/mock_1607622725907/work
+morphys==1.0
+mpi4py==3.0.3
+mujoco-py==2.0.2.13
+mypy-extensions==0.4.3
+networkx==2.5.1
+nose==1.3.7
+numpy==1.17.4
+oauthlib==3.1.0
+olefile==0.46
+opencv-python==4.5.1.48
+opt-einsum==3.3.0
+oyaml==1.0
+pandas @ file:///opt/concourse/worker/volumes/live/4a78f420-de57-4d97-543f-8ecd5647e338/volume/pandas_1602088155642/work
+Pillow==7.2.0
+plotly==4.14.3
+protobuf==3.14.0
+psutil==5.8.0
+py-cid==0.3.0
+py-multibase==1.0.3
+py-multicodec==0.2.1
+py-multihash==0.2.3
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pybase64==1.1.4
+PyContracts3==3.0.2
+pycparser==2.20
+pydot==1.4.2
+pyfiglet==0.8.post1
+PyGeometry-z6==2.0.5
+pyglet==1.5.0
+PyOpenGL==3.1.0
+pyparsing @ file:///home/linux1/recipes/ci/pyparsing_1610983426697/work
+pyrender==0.1.45
+pyrsistent==0.17.3
+python-baseconv==1.2.2
+python-dateutil @ file:///home/ktietz/src/ci/python-dateutil_1611928101742/work
+pytz @ file:///tmp/build/80754af9/pytz_1612215392582/work
+PyWavelets==1.1.1
+PyYAML==5.4.1
+pyzmq==22.0.3
+requests==2.25.1
+requests-oauthlib==1.3.0
+retrying==1.3.3
+rsa==4.7.2
+-e git+https://github.com/Fanshaoliu/safe-rl.git@c626d83fb0c18018da81f40f1cb8cbf2bab55046#egg=safe_rl
+-e git+https://github.com/Fanshaoliu/safe-rl.git@c626d83fb0c18018da81f40f1cb8cbf2bab55046#egg=safety_gym&subdirectory=safety-gym
+scikit-image==0.17.2
+scipy @ file:///opt/concourse/worker/volumes/live/d2cc8ac1-8922-48bc-7969-1f576a9f572d/volume/scipy_1597686637832/work
+seaborn @ file:///tmp/build/80754af9/seaborn_1608578541026/work
+setproctitle==1.2.2
+six @ file:///opt/concourse/worker/volumes/live/5839b2d2-7415-4ff0-4c61-c4cddf798f7c/volume/six_1605205320479/work
+soupsieve==2.2.1
+stringcase==1.2.0
+svgwrite==1.4.1
+SystemCmd-z6==3.0.5
+tensorboard==1.15.0
+tensorboard-plugin-wit==1.8.0
+tensorflow==1.13.1
+tensorflow-estimator==1.13.0
+termcolor==1.1.0
+tifffile==2020.9.3
+torch==1.8.1
+torchvision==0.9.1
+tornado @ file:///opt/concourse/worker/volumes/live/cd39df49-5c81-4c95-513c-5bb83298b7ef/volume/tornado_1606942310103/work
+trimesh==3.9.12
+typing-extensions @ file:///home/ktietz/src/ci_mi/typing_extensions_1612808209620/work
+typing-inspect==0.6.0
+urllib3==1.26.4
+validate-email==1.3
+varint==1.0.2
+wcwidth==0.2.5
+webcolors==1.11.1
+Werkzeug @ file:///home/ktietz/src/ci/werkzeug_1611932622770/work
+wrapt==1.12.1
+xmltodict==0.12.0
+xtermcolor==1.3
+zipp @ file:///tmp/build/80754af9/zipp_1615904174917/work
+zuper-commons-z6==6.1.7
+zuper-ipce-z6==6.0.36
+zuper-nodes-z6==6.1.1
+zuper-typing-z6==6.1.8
