@@ -48,6 +48,34 @@ class Trainer():
                 a  : (2,)
                 r  : ()
                 fg : (2,)
+
+        Network architecture
+        TODO: 实现TD3中的min(Q1, Q2)  # 20210512 07:59
+
+            self.actor and self.actor_target
+                usage:
+                    a = self.actor(states, goals)
+                    n_actions = self.actor_target(n_states, n_goals)
+
+                input_dim: state_dim + goal_dim (28+2)
+                ouput_dim: action_dim (2)
+                hidden_size: 64
+                action_func: tanh
+
+            self.critic1 and self.critic2 and self.critic1_target and self.critic2_target
+                usage:
+                    target_Q1 = self.critic1_target(n_states, n_goals, n_actions)
+                    target_Q2 = self.critic2_target(n_states, n_goals, n_actions)
+                    target_Q = torch.min(target_Q1, target_Q2)
+                    target_Q_detached = (rewards + not_done * self.gamma * target_Q).detach()
+
+                    current_Q1 = self.critic1(states, goals, actions)
+                    current_Q2 = self.critic2(states, goals, actions)
+
+                input_dim: state_dim + goal_dim + action_dim (28+2+2)
+                ouput_dim: reward_dim (2)
+                hidden_size: 64
+                action_func: tanh
         '''
         global_step = 0
         start_time = time()
@@ -55,13 +83,8 @@ class Trainer():
         for e in np.arange(self.args.num_episode) + 1:
             # self.env.render()
             obs = self.env.reset()
-            # fg = obs['desired_goal']
-            # s = obs['observation']
             fg = self.env.goal_pos[:2]
-            # print(np.shape(fg))
             s = self.env.obs()
-
-            # print(np.shape(s))
             done = False
 
             step = 0
@@ -241,7 +264,7 @@ if __name__ == '__main__':
 
     state_dim = env.observation_space.shape[0]
     action_dim = env.action_space.shape[0]
-    # print(state_dim, action_dim)
+    print(state_dim, action_dim)
 
     scale = env.action_space.high * np.ones(action_dim)
 
