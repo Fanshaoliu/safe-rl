@@ -42,7 +42,8 @@ def run_policy(env, get_action, max_ep_len=None, num_episodes=100, render=True):
 if __name__ == '__main__':
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument('--fpath', type=str, default="/Users/liushaofan/PycharmProjects/safety-starter-agents/data/baseline/point-goal1-ppo")
+    parser.add_argument('--fpath', type=str, default="/Users/liushaofan/PycharmProjects/safe-rl/data/baseline/point-goal1-ppo")
+    # data/baseline/ppo-Car-Goal-0-baseline
     parser.add_argument('--len', '-l', type=int, default=0)
     parser.add_argument('--episodes', '-n', type=int, default=100)
     parser.add_argument('--norender', '-nr', action='store_true')

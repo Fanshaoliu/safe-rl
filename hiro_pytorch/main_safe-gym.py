@@ -2,6 +2,7 @@ import gym, safety_gym
 # env = gym.make('Safexp-DoggoGoal1-v0')
 
 import os
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 import argparse
 import numpy as np
 import datetime
@@ -99,7 +100,7 @@ class Trainer():
 
             while not done:
                 # print(self.agent.fg)
-                self.env.render()
+                # self.env.render()
                 # Take action
                 '''
                 para

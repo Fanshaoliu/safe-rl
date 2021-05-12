@@ -39,9 +39,9 @@
             "first_row":	true,
             "log_current_row":	{},
             "log_headers":	[],
-            "output_dir":	"/Users/liushaofan/PycharmProjects/safety-starter-agents/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0",
+            "output_dir":	"/Users/liushaofan/PycharmProjects/safe-rl/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0",
             "output_file":	{
-                "<_io.TextIOWrapper name='/Users/liushaofan/PycharmProjects/safety-starter-agents/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0/progress.txt' mode='w' encoding='UTF-8'>":	{
+                "<_io.TextIOWrapper name='/Users/liushaofan/PycharmProjects/safe-rl/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0/progress.txt' mode='w' encoding='UTF-8'>":	{
                     "mode":	"w"
                 }
             }
@@ -49,7 +49,7 @@
     },
     "logger_kwargs":	{
         "exp_name":	"runagent",
-        "output_dir":	"/Users/liushaofan/PycharmProjects/safety-starter-agents/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0"
+        "output_dir":	"/Users/liushaofan/PycharmProjects/safe-rl/data/2021-04-13_runagent/2021-04-13_15-24-43-runagent_s0"
     },
     "max_ep_len":	1000,
     "penalty_init":	1.0,

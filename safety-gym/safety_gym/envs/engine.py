@@ -316,6 +316,10 @@ class Engine(gym.Env, gym.utils.EzPickle):
         self.seed(self._seed)
         self.done = True
 
+        print("config:\n")
+        for k, v in self.config.items():
+            print(k, v)
+
     def parse(self, config):
         ''' Parse a config dict - see self.DEFAULT for description '''
         self.config = deepcopy(self.DEFAULT)
