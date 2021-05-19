@@ -222,7 +222,7 @@ if __name__ == '__main__':
     parser.add_argument('--start_training_steps', default=2500, type=int, help='Unit = Global Step')
     parser.add_argument('--writer_freq', default=25, type=int, help='Unit = Global Step')
     # Training (Model Saving)
-    parser.add_argument('--subgoal_dim', default=2, type=int)
+    parser.add_argument('--subgoal_dim', default=2, type=int)  # 当前subgoal维度是2
     parser.add_argument('--load_episode', default=-1, type=int)
     parser.add_argument('--model_save_freq', default=2000, type=int, help='Unit = Episodes')
     parser.add_argument('--print_freq', default=250, type=int, help='Unit = Episode')

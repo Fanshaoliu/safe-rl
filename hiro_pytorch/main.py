@@ -1,46 +1,42 @@
-import os 
+import os
 import argparse
 import numpy as np
 import datetime
 import copy
 from envs import EnvWithGoal
 from envs.create_maze_env import create_maze_env
-from hiro.hiro_utils import Subgoal 
+from hiro.hiro_utils import Subgoal
 from hiro.utils import Logger, _is_update, record_experience_to_csv, listdirs
 from hiro.models import HiroAgent, TD3Agent
-import gym
 
-from time import time
 
 def run_evaluation(args, env, agent):
     agent.load(args.load_episode)
 
     rewards, success_rate = agent.evaluate_policy(env, args.eval_episodes, args.render, args.save_video, args.sleep)
-    
+
     print('mean:{mean:.2f}, \
             std:{std:.2f}, \
             median:{median:.2f}, \
             success:{success:.2f}'.format(
-                mean=np.mean(rewards), 
-                std=np.std(rewards), 
-                median=np.median(rewards), 
-                success=success_rate))
+        mean=np.mean(rewards),
+        std=np.std(rewards),
+        median=np.median(rewards),
+        success=success_rate))
+
 
 class Trainer():
     def __init__(self, args, env, agent, experiment_name):
         self.args = args
-        # self.env = env
-        self.env = lambda: gym.make(env_name)
-        self.agent = agent 
+        self.env = env
+        self.agent = agent
         log_path = os.path.join(args.log_path, experiment_name)
         self.logger = Logger(log_path=log_path)
 
     def train(self):
         global_step = 0
-        start_time = time()
-        # self.env.render()
-        for e in np.arange(self.args.num_episode)+1:
-            # self.env.render()
+
+        for e in np.arange(self.args.num_episode) + 1:
             obs = self.env.reset()
             fg = obs['desired_goal']
             s = obs['observation']
@@ -63,20 +59,15 @@ class Trainer():
 
                 # Log
                 self.log(global_step, [losses, td_errors])
-                
+
                 # Updates
                 s = n_s
                 episode_reward += r
                 step += 1
                 global_step += 1
                 self.agent.end_step()
-                
-            self.agent.end_episode(e, self.logger)
-            if e%10==0:
-                end_time = time()
-                print("Epoch: ",e , "Reward: ", episode_reward, "Time consuming: ", int(end_time-start_time))
-                start_time = time()
 
+            self.agent.end_episode(e, self.logger)
             self.logger.write('reward/Reward', episode_reward, e)
             self.evaluate(e)
 
@@ -86,33 +77,35 @@ class Trainer():
         # Logs
         if global_step >= self.args.start_training_steps and _is_update(global_step, args.writer_freq):
             for k, v in losses.items():
-                self.logger.write('loss/%s'%(k), v, global_step)
-            
+                self.logger.write('loss/%s' % (k), v, global_step)
+
             for k, v in td_errors.items():
-                self.logger.write('td_error/%s'%(k), v, global_step)
-    
+                self.logger.write('td_error/%s' % (k), v, global_step)
+
     def evaluate(self, e):
         # Print
         if _is_update(e, args.print_freq):
             agent = copy.deepcopy(self.agent)
             rewards, success_rate = agent.evaluate_policy(self.env)
-            #rewards, success_rate = self.agent.evaluate_policy(self.env)
+            # rewards, success_rate = self.agent.evaluate_policy(self.env)
             self.logger.write('Success Rate', success_rate, e)
-            
-            print('episode:{episode:05d}, mean:{mean:.2f}, std:{std:.2f}, median:{median:.2f}, success:{success:.2f}'.format(
-                    episode=e, 
-                    mean=np.mean(rewards), 
-                    std=np.std(rewards), 
-                    median=np.median(rewards), 
+
+            print(
+                'episode:{episode:05d}, mean:{mean:.2f}, std:{std:.2f}, median:{median:.2f}, success:{success:.2f}'.format(
+                    episode=e,
+                    mean=np.mean(rewards),
+                    std=np.std(rewards),
+                    median=np.median(rewards),
                     success=success_rate))
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     # Across All
-    parser.add_argument('--train', action='store_true', default=True)
+    parser.add_argument('--train', default="True", action='store_true')
     parser.add_argument('--eval', action='store_true')
-    parser.add_argument('--render', action='store_true', default=True)
+    parser.add_argument('--render', action='store_true')
     parser.add_argument('--save_video', action='store_true')
     parser.add_argument('--sleep', type=float, default=-1)
     parser.add_argument('--eval_episodes', type=float, default=5, help='Unit = Episode')
@@ -174,7 +167,7 @@ if __name__ == '__main__':
             buffer_size=args.buffer_size,
             batch_size=args.batch_size,
             start_training_steps=args.start_training_steps
-            )
+        )
     else:
         agent = HiroAgent(
             state_dim=state_dim,
@@ -192,7 +185,7 @@ if __name__ == '__main__':
             reward_scaling=args.reward_scaling,
             policy_freq_high=args.policy_freq_high,
             policy_freq_low=args.policy_freq_low
-            )
+        )
 
     # Run training or evaluation
     if args.train:
