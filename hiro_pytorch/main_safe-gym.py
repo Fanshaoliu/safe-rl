@@ -96,8 +96,6 @@ class Trainer():
             '''
             self.agent.set_final_goal(fg)
 
-            # print(self.agent.fg, "self.fg")
-
             while not done:
                 # print(self.agent.fg)
                 # self.env.render()
@@ -162,8 +160,8 @@ class Trainer():
                 step += 1
                 global_step += 1
 
-                # end_step主要是调整奖励与sub_goal
                 '''
+                end_step主要是调整奖励与sub_goal
                 self.episode_subreward += self.sr  # self.sr = self.low_reward(s, self.sg, n_s)
                 self.sg = self.n_sg                # self.n_sg = self._choose_subgoal(step, s, self.sg, n_s, n_pos)
                 '''
