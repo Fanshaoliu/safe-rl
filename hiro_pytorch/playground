@@ -1,0 +1,12 @@
+print("select \n" +
+                "       queryid, \n" +
+                "       item_id, \n" +
+                "       bizid, \n" +
+                "       user_id, \n" +
+                "       is_clk, " +
+                "       extend['slotid'] as slotid, " +
+                "       extend['match_fulltemp_id'] as match_fulltemp_id," +
+                "       extend['creationid'] as creation_id,\n" +
+                "       extend['is_evoke'] as is_evoke\n" +
+                "  from mart_dprec.adx_ctr_impression_recorrect\n" +
+                " where hp_cal_dt='<bizdate_wide>' and extend['launch_scene'] in ('10','15') and extend['cost_type'] != 'CLICK'\n")
