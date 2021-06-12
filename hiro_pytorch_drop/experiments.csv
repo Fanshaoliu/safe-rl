@@ -92,3 +92,7 @@ True,False,True,False,-1,5,AntMaze,False,25000,2500,25,15,-1,2000,250,,model,log
 True,False,False,False,-1,5,AntMaze,False,25000,2500,25,15,-1,2000,250,,model,log,2,2,200000,100,10,10,0.1,20210519_165432
 True,False,False,False,-1,5,AntMaze,False,25000,2500,25,15,-1,2000,250,,model,log,2,2,200000,100,10,10,0.1,20210524_091747
 True,False,True,False,-1,5,AntMaze,False,25000,2500,25,2,-1,2000,250,,model,log,2,2,200000,10,100,100,0.1,20210606_173318
+True,False,True,False,-1,5,AntMaze,False,25000,2500,25,2,-1,2000,250,,model,log,2,2,200000,10,100,100,0.1,20210612_104435
+True,False,True,False,-1,5,AntMaze,False,25000,2500,25,2,-1,2000,250,,model,log,2,2,200000,10,100,100,0.1,20210612_104753
+True,False,True,False,-1,5,AntMaze,False,25000,2500,25,2,-1,2000,250,,model,log,2,2,200000,10,100,100,0.1,20210612_105719
+True,False,True,False,-1,5,AntMaze,False,25000,2500,25,2,-1,2000,250,,model,log,2,2,200000,10,100,100,0.1,20210612_105824

@@ -132,7 +132,7 @@ class Trainer():
                 # print("now pos: ", self.env.robot_pos)
                 # print("goal pos: ", self.env.goal_pos)
                 # print("sub goal: ", self.agent.sg)
-                #
+
                 # print(np.shape(a), np.shape(r),np.shape(n_s),np.shape(done))
 
                 # Append
@@ -167,11 +167,15 @@ class Trainer():
                 '''
                 self.agent.end_step()
 
+                self.env.render()
+
             self.agent.end_episode(e, self.logger)
             if e % 10 == 0:
                 end_time = time()
                 print("Epoch: ", e, "Reward: ", episode_reward, "Time consuming: ", int(end_time - start_time), "Global_step: ", global_step)
                 start_time = time()
+
+
 
             self.logger.write('reward/Reward', episode_reward, e)
             self.evaluate(e)
